@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dh2lt0trtvg30"]
+
+[ext_resource type="Script" uid="uid://ddn400bs5i83t" path="res://Scripts/player_controller.gd" id="1_rwmit"]
+[ext_resource type="Script" uid="uid://dakfyl18kmcc6" path="res://Scripts/camera_controller.gd" id="2_g2tow"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7lngq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7lngq"]
+
+[node name="Player_Controller" type="CharacterBody3D" unique_id=111592646]
+script = ExtResource("1_rwmit")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=870163092]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_7lngq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=663710467]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_7lngq")
+
+[node name="Camera_Controller" type="Node3D" parent="." unique_id=2046497062]
+top_level = true
+script = ExtResource("2_g2tow")
+
+[node name="Camera3D" type="Camera3D" parent="Camera_Controller" unique_id=1898774738]
+physics_interpolation_mode = 2
+
+[node name="Camera_Controller_Anchor" type="Marker3D" parent="." unique_id=1746629819]
