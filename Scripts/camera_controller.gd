@@ -51,11 +51,14 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("Zoom-In"):
 		# camera.fov = FOV_ZOOM_IN
 		camera.fov = lerp(camera.fov, FOV_ZOOM_IN, delta * 10.0)
+		player.sprint_available = false
 	elif !Input.is_action_pressed("Backward"):
 		var velocity_clamped: float = clamp(player.velocity.length(), 0.0, player.speed * 2)
 		var target_fov: float = BASE_FOV + (FOV_CHANGE * velocity_clamped)
 		camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
+		player.sprint_available = true
 	else:
 		camera.fov = lerp(camera.fov, BASE_FOV, delta * 8.0)
+		player.sprint_available = true
 		
 	

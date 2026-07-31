@@ -10,7 +10,8 @@ const JUMP_VELOCITY: float = 3.5
 
 var jump_buffer: bool = false
 var jump_available: bool = true
-var speed = WALK_SPEED
+var sprint_available: bool = true
+var speed: float = WALK_SPEED
 
 @onready var camera_controller_anchor: Marker3D = $Camera_Controller_Anchor
 
@@ -38,7 +39,7 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	
 	# Sprint speed
-	speed = SPRINT_SPEED if Input.is_action_pressed("Shift") else WALK_SPEED
+	speed = SPRINT_SPEED if Input.is_action_pressed("Shift") && sprint_available == true else WALK_SPEED
 	
 	var input_dir: Vector2 = Input.get_vector("Left", "Right", "Forward", "Backward")
 	
